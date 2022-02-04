@@ -1,0 +1,22 @@
+{
+    "status":"OK",
+    "data":{
+       "name":"Syed Saad Ali",
+       "title":"Software Developer",
+       "statement":"abc",
+       "hobbies":[
+          {
+             "id":1,
+             "hobby":"Movies"
+          },
+          {
+             "id":2,
+             "hobby":"Travel"
+          },
+          {
+             "id":3,
+             "hobby":"Photo"
+          }
+       ]
+    }
+ }
