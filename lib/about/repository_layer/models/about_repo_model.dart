@@ -11,11 +11,12 @@ class AboutRepoModel {
   });
   factory AboutRepoModel.fromJson(Map<String, dynamic> json) {
     return AboutRepoModel(
-      name: json["id"],
-      title: json["title"],
-      statement: json["image"],
-      hobbies: Hobbies.fromJson(json["hobbies"]) as List<Hobbies>,
-    );
+        name: json["name"],
+        title: json["title"],
+        statement: json["statement"],
+        hobbies: (json["hobbies"] as List)
+            .map((state) => Hobbies.fromJson(state as Map<String, dynamic>))
+            .toList());
   }
 }
 
