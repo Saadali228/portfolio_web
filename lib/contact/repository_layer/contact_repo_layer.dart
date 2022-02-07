@@ -4,14 +4,12 @@ import 'package:portfolio_web/contact/repository_layer/models/contact_repo_model
 class ContactRepoLayer {
   ContactRepoLayer(this._contactDataLayer);
   final ContactDataLayer _contactDataLayer;
-  Future<List<ContactRepoModel>?> fetchContactDataFromDataLayer() async {
+  Future<ContactRepoModel> fetchContactDataFromDataLayer() async {
     final ContactList = await _contactDataLayer.fetchContactData();
-    return ContactList?.map(
-      (e) => ContactRepoModel(
-        name: e.name,
-        phone: e.phone,
-        email: e.email,
-      ),
-    ).toList();
+    return ContactRepoModel(
+      name: ContactList.name,
+      phone: ContactList.phone,
+      email: ContactList.email,
+    );
   }
 }

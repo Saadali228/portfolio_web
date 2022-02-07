@@ -7,7 +7,7 @@ class SkillsDataLayer {
     final String response =
         await rootBundle.loadString('assets/data/skills.json');
     final data = await json.decode(response);
-    final skillsData = data["data"];
+    final skillsData = data["data"]["skills"] as List;
     List<SkillsDataModel>? skillsList;
     if (data["status"] == "ok") {
       skillsList = skillsData.map((e) => SkillsDataModel.fromJson(e)).toList();
