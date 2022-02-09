@@ -17,7 +17,6 @@ class HomePageState extends Equatable {
   HomePageState copyWith({
     HomePageStatus? homePageStatus,
     HomePageRepoModel? homePageRepoModel,
-    HomePageRepoModel,
   }) {
     return HomePageState(
       homePageRepoModel: homePageRepoModel ?? this.homePageRepoModel,
@@ -25,6 +24,7 @@ class HomePageState extends Equatable {
     );
   }
 
+  @override
   List<Object> get props => [
         homePageStatus,
         homePageStatus,

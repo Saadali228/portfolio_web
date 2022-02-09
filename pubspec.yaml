@@ -12,12 +12,14 @@ dependencies:
   cupertino_icons: ^1.0.2
   equatable:
   flutter_bloc:
+  google_fonts: 2.1.1
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   test:  
   flutter_lints: ^1.0.0
+  url_strategy: ^0.2.0
 
 flutter:
 
@@ -29,3 +31,9 @@ flutter:
     - assets/data/skills.json
     - assets/data/portfolio.json
     - assets/data/contact.json
+    - assets/images/
+    # - assets/images/ellipse-3.png
+    # - assets/images/ellipse.png
+    # - assets/images/hero-img.png
+    # - assets/images/rectangle.png
+    # - assets/images/saly.png

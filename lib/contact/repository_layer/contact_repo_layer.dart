@@ -5,11 +5,11 @@ class ContactRepoLayer {
   ContactRepoLayer(this._contactDataLayer);
   final ContactDataLayer _contactDataLayer;
   Future<ContactRepoModel> fetchContactDataFromDataLayer() async {
-    final ContactList = await _contactDataLayer.fetchContactData();
+    final contactList = await _contactDataLayer.fetchContactData();
     return ContactRepoModel(
-      name: ContactList.name,
-      phone: ContactList.phone,
-      email: ContactList.email,
+      name: contactList.name,
+      phone: contactList.phone,
+      email: contactList.email,
     );
   }
 }

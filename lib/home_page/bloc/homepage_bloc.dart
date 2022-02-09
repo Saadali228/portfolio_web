@@ -17,18 +17,16 @@ class HomepageBloc extends Bloc<HomePageEvent, HomePageState> {
           homePageStatus: HomePageStatus.loading,
         ),
       );
-      try {
-        final HomePageInfo =
-            await homePageRepoLayer.fetchhomePageDataFromDataLayer();
+      final homePageInfo =
+          await homePageRepoLayer.fetchhomePageDataFromDataLayer();
+      // print(homePageInfo.name);
+      emit(
         state.copyWith(
-          HomePageRepoModel: HomePageInfo,
+          homePageRepoModel: homePageInfo,
           homePageStatus: HomePageStatus.loaded,
-        );
-      } catch (_) {
-        emit(
-          state.copyWith(homePageStatus: HomePageStatus.error),
-        );
-      }
+        ),
+      );
+      // print(state.homePageStatus);
     });
   }
 }

@@ -6,7 +6,7 @@ abstract class PortfolioEvent extends Equatable {
   @override
   List<Object> get props => [];
 }
-class FetchPortFolioInfo extends PortfolioEvent {
+class FetchPortfolioInfo extends PortfolioEvent {
   @override
   List<Object> get props => [];
 }

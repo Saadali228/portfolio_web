@@ -18,9 +18,9 @@ class SkillsBloc extends Bloc<SkillsEvent, SkillsState> {
         ),
       );
       try {
-        final SkillsInfo = await skillsRepoLayer.fetchskillsDataFromDataLayer();
+        final skillsInfo = await skillsRepoLayer.fetchskillsDataFromDataLayer();
         state.copyWith(
-          skillsList: SkillsInfo,
+          skillsList: skillsInfo,
           skillsStatus: SkillsStatus.loaded,
         );
       } catch (_) {

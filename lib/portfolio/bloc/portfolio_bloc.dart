@@ -11,22 +11,24 @@ class PortfolioBloc extends Bloc<PortfolioEvent, PortfolioState> {
   PortfolioBloc(
     this.portfolioRepoLayer,
   ) : super(const PortfolioState()) {
-    on<FetchPortFolioInfo>((event, emit) async {
+    on<FetchPortfolioInfo>((event, emit) async {
       emit(
         state.copyWith(
-          portFolioStatus: PortFolioStatus.loading,
+          portfolioStatus: PortfolioStatus.loading,
         ),
       );
       try {
-        final PortFolioInfo =
+        final portfolioInfo =
             await portfolioRepoLayer.fetchPortfolioDataFromDataLayer();
         state.copyWith(
-          portFolioList: PortFolioInfo,
-          portFolioStatus: PortFolioStatus.loaded,
+          portfolioList: portfolioInfo,
+          portfolioStatus: PortfolioStatus.loaded,
         );
       } catch (_) {
         emit(
-          state.copyWith(portFolioStatus: PortFolioStatus.error),
+          state.copyWith(
+            portfolioStatus: PortfolioStatus.error,
+          ),
         );
       }
     });

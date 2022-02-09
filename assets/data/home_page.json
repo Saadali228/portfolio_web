@@ -1,8 +1,8 @@
 {
-    "status":"ok",
-    "data":{
-       "name":"Saad Ali",
-       "title":"Software Developer",
-       "subtitle":"Final Year Student at Nuces & Flutter Intern at VentureDive"
-    }
- }
+   "status": "ok",
+   "data": {
+      "name": "Saad Ali",
+      "title": "Software Developer",
+      "subtitle": "Final Year Student at NUCES & Flutter Intern at VentureDive"
+   }
+}

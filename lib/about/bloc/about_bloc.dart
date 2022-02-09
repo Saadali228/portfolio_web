@@ -7,9 +7,7 @@ part 'about_state.dart';
 
 class AboutBloc extends Bloc<AboutEvent, AboutState> {
   AboutRepoLayer aboutRepoLayer;
-  AboutBloc(
-    this.aboutRepoLayer,
-  ) : super(const AboutState()) {
+  AboutBloc(this.aboutRepoLayer) : super(const AboutState()) {
     on<FetchAboutInfo>((event, emit) async {
       emit(
         state.copyWith(

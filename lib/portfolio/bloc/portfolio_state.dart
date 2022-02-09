@@ -1,6 +1,6 @@
 part of 'portfolio_bloc.dart';
 
-enum PortFolioStatus {
+enum PortfolioStatus {
   intial,
   loading,
   loaded,
@@ -9,24 +9,24 @@ enum PortFolioStatus {
 
 class PortfolioState extends Equatable {
   const PortfolioState({
-    this.portFolioList = const [],
-    this.portFolioStatus = PortFolioStatus.intial,
+    this.portfolioList = const [],
+    this.portfolioStatus = PortfolioStatus.intial,
   });
-  final PortFolioStatus portFolioStatus;
-  final List<PortfolioRepoModel>? portFolioList;
+  final PortfolioStatus portfolioStatus;
+  final List<PortfolioRepoModel>? portfolioList;
   PortfolioState copyWith({
-    PortFolioStatus? portFolioStatus,
-    List<PortfolioRepoModel>? portFolioList,
+    PortfolioStatus? portfolioStatus,
+    List<PortfolioRepoModel>? portfolioList,
   }) {
     return PortfolioState(
-      portFolioList: portFolioList ?? this.portFolioList,
-      portFolioStatus: portFolioStatus ?? this.portFolioStatus,
+      portfolioList: portfolioList ?? this.portfolioList,
+      portfolioStatus: portfolioStatus ?? this.portfolioStatus,
     );
   }
 
   @override
-  List<Object> get props => [
-        portFolioList!,
-        portFolioStatus,
+  List<Object?> get props => [
+        portfolioList,
+        portfolioStatus,
       ];
 }

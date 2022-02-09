@@ -7,7 +7,6 @@ class AboutDataLayer {
     try {
       String? response = await rootBundle.loadString('assets/data/about.json');
       final data = await json.decode(response);
-      print(data);
       final aboutData = data["data"];
       final _aboutList = AboutDataModel.fromJson(aboutData);
       return _aboutList;
