@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:portfolio_web/about/bloc/about_bloc.dart';
+import 'package:portfolio_web/about/data_layer/about_data_layer.dart';
+import 'package:portfolio_web/about/repository_layer/about_repo_layer.dart';
 import 'package:portfolio_web/home_page/widgets/home_page_banner.dart';
 import 'package:portfolio_web/home_page/widgets/web_nav_bar.dart';
+import 'package:portfolio_web/utils/constants.dart';
 
 class HomePageScreen extends StatefulWidget {
   const HomePageScreen({Key? key}) : super(key: key);
@@ -15,6 +20,10 @@ class _HomePageScreenState extends State<HomePageScreen> {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
+    AboutDataLayer aboutDataLayer = AboutDataLayer();
+    AboutRepoLayer aboutRepoLayer = AboutRepoLayer(
+      aboutDataLayer: aboutDataLayer,
+    );
     return Scaffold(
       appBar: AppBar(
         centerTitle: false,
@@ -37,11 +46,23 @@ class _HomePageScreenState extends State<HomePageScreen> {
           ],
         ),
         actions: [
-          const WebNavBar(),
-          SizedBox(width: size.width * 0.03),
+          if (size.width > mobile) const WebNavBar(),
+          if (size.width > mobile) SizedBox(width: size.width * 0.03),
         ],
       ),
-      body: const HomePageBanner(),
+      body: PageView(
+        controller: pageController,
+        children: [
+          HomePageBanner(
+            pageController: pageController,
+          ),
+          BlocProvider(
+            create: (context) => AboutBloc(
+              aboutRepoLayer,
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

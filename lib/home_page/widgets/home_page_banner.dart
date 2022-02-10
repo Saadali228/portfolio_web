@@ -3,16 +3,15 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:portfolio_web/home_page/bloc/homepage_bloc.dart';
 import 'package:portfolio_web/home_page/repository_layer/models/homepage_repo_model.dart';
+import 'package:portfolio_web/home_page/widgets/home_mobile_view.dart';
+import 'package:portfolio_web/home_page/widgets/home_web_view.dart';
 import 'package:portfolio_web/home_page/widgets/wave_clipper.dart';
+import 'package:portfolio_web/utils/constants.dart';
 
-class HomePageBanner extends StatefulWidget {
-  const HomePageBanner({Key? key}) : super(key: key);
-
-  @override
-  _HomePageBannerState createState() => _HomePageBannerState();
-}
-
-class _HomePageBannerState extends State<HomePageBanner> {
+class HomePageBanner extends StatelessWidget {
+  const HomePageBanner({Key? key, required this.pageController})
+      : super(key: key);
+  final PageController pageController;
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<HomepageBloc, HomePageState>(
@@ -113,59 +112,76 @@ class HomeLoaded extends StatelessWidget {
             colorBlendMode: BlendMode.modulate,
           ),
         ),
+        size.width > mobile
+            ? Positioned(
+                top: 100,
+                left: size.width * 0.05,
+                child: HomeWebView(
+                  name: 'HELLO, IM ${homePageRepoModel!.name}',
+                  title: homePageRepoModel!.title,
+                  subtitle: homePageRepoModel!.subtitle,
+                ),
+              )
+            : Positioned(
+                top: 20,
+                left: size.width * 0.03,
+                child: HomeMobileView(
+                  name: 'HELLO, IM ${homePageRepoModel!.name}',
+                  title: homePageRepoModel!.title,
+                  subtitle: homePageRepoModel!.subtitle,
+                ),
+              ),
         Positioned(
-          top: 120,
-          left: 80,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                'HELLO, IM ${homePageRepoModel!.name}',
-                style: GoogleFonts.notoSans(
-                  color: Colors.white,
-                  fontWeight: FontWeight.w400,
-                  fontSize: 24,
-                ),
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              Text(
-                homePageRepoModel!.title,
-                style: const TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.w700,
-                  fontSize: 40,
-                ),
-              ),
-              const SizedBox(
-                width: 200,
-                child: Divider(
-                  thickness: 2,
-                  color: Colors.white,
-                ),
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              SizedBox(
-                width: 500,
-                child: Text(
-                  homePageRepoModel!.subtitle,
-                  style: GoogleFonts.notoSans(
-                    color: Colors.white,
-                    fontWeight: FontWeight.w400,
-                    fontSize: 24,
-                  ),
-                ),
-              ),
-              
-            ],
+          bottom: 5,
+          right: size.width * 0.05,
+          child: Image.asset(
+            'assets/images/hero-img.png',
+            width: size.width > tablet
+                ? 500
+                : size.width > mobile
+                    ? 350
+                    : 300,
           ),
-        ),
+        )
       ],
     );
   }
+}
+
+buildButton(
+  Color color,
+  String buttonText,
+  Color textColor,
+) {
+  return ElevatedButton(
+    onPressed: () {},
+    style: ButtonStyle(
+      side: MaterialStateProperty.all<BorderSide>(
+        const BorderSide(color: Colors.white),
+      ),
+      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+        RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(30),
+        ),
+      ),
+      fixedSize: MaterialStateProperty.all<Size>(
+        const Size(120, 40),
+      ),
+      backgroundColor: MaterialStateProperty.all<Color>(
+        color,
+      ),
+    ),
+    child: Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Text(
+        buttonText,
+        style: TextStyle(
+          color: textColor,
+          fontSize: 18,
+        ),
+      ),
+    ),
+  );
 }
 
 class _HomeError extends StatelessWidget {
