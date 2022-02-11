@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:portfolio_web/about/bloc/about_bloc.dart';
 import 'package:portfolio_web/about/data_layer/about_data_layer.dart';
+import 'package:portfolio_web/about/pages/about_screen.dart';
 import 'package:portfolio_web/about/repository_layer/about_repo_layer.dart';
 import 'package:portfolio_web/home_page/widgets/home_page_banner.dart';
 import 'package:portfolio_web/home_page/widgets/web_nav_bar.dart';
@@ -52,6 +53,7 @@ class _HomePageScreenState extends State<HomePageScreen> {
       ),
       body: PageView(
         controller: pageController,
+        scrollDirection: Axis.vertical,
         children: [
           HomePageBanner(
             pageController: pageController,
@@ -59,6 +61,9 @@ class _HomePageScreenState extends State<HomePageScreen> {
           BlocProvider(
             create: (context) => AboutBloc(
               aboutRepoLayer,
+            ),
+            child: AboutScreen(
+              controller: pageController,
             ),
           ),
         ],

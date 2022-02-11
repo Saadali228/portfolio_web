@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:portfolio_web/home_page/bloc/homepage_bloc.dart';
 import 'package:portfolio_web/home_page/repository_layer/models/homepage_repo_model.dart';
 import 'package:portfolio_web/home_page/widgets/home_mobile_view.dart';

@@ -11,9 +11,43 @@ void main() {
             "title": "Software Developer",
             "statement": "Final Year Student at Nuces",
             "hobbies": [
-              {"id": "1", "hobby": "Movies"},
-              {"id": "2", "hobby": "Travel"},
-              {"id": "3", "hobby": "Photo"}
+              {
+                "id": "1",
+                "hobby": "Movies",
+                "image": "https://imgur.com/u5xLSMy.png"
+              },
+              {
+                "id": "2",
+                "hobby": "Travel",
+                "image": "https://imgur.com/J7jtjTI.png"
+              },
+              {
+                "id": "3",
+                "hobby": "Photo",
+                "image": "https://imgur.com/t42FGrm.png"
+              }
+            ],
+            "skills": [
+              {
+                "id": "1",
+                "title": "User Research",
+                "image": "https://imgur.com/sKpNkPO.png"
+              },
+              {
+                "id": "2",
+                "title": "Mockup",
+                "image": "https://imgur.com/vul8CWk.png"
+              },
+              {
+                "id": "3",
+                "title": "Wireframing",
+                "image": "https://imgur.com/jUmD2Fl.png"
+              },
+              {
+                "id": "4",
+                "title": "Prototype",
+                "image": "https://imgur.com/48VuvHf.png"
+              }
             ]
           },
         ),

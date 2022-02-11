@@ -14,17 +14,20 @@ class AboutBloc extends Bloc<AboutEvent, AboutState> {
           aboutStatus: AboutStatus.loading,
         ),
       );
-      try {
-        final aboutInfo = await aboutRepoLayer.fetchAboutDataFromDataLayer();
+      // try {
+      final aboutInfo = await aboutRepoLayer.fetchAboutDataFromDataLayer();
+      emit(
         state.copyWith(
           aboutItem: aboutInfo,
           aboutStatus: AboutStatus.loaded,
-        );
-      } catch (_) {
-        emit(
-          state.copyWith(aboutStatus: AboutStatus.error),
-        );
-      }
+        ),
+      );
+      // }
+      // catch (_) {
+      //   emit(
+      //     state.copyWith(aboutStatus: AboutStatus.error),
+      //   );
+      // }
     });
   }
 }

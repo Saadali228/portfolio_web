@@ -19,6 +19,7 @@ class AboutScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<AboutBloc, AboutState>(
       builder: (context, state) {
+        print(state.aboutStatus);
         switch (state.aboutStatus) {
           case (AboutStatus.intial):
             context.read<AboutBloc>().add(
@@ -28,7 +29,9 @@ class AboutScreen extends StatelessWidget {
           case AboutStatus.loading:
             return const _AboutLoading();
           case AboutStatus.loaded:
-            return const _AboutLoading();
+            return _AboutLoaded(
+              aboutData: state.aboutItem,
+            );
           case AboutStatus.error:
           default:
             return const _AboutError();
@@ -77,51 +80,20 @@ class _AboutError extends StatelessWidget {
   }
 }
 
-class _AboutLoaded extends StatefulWidget {
+class _AboutLoaded extends StatelessWidget {
   const _AboutLoaded({Key? key, required this.aboutData}) : super(key: key);
 
   final AboutRepoModel? aboutData;
-
-  @override
-  State<_AboutLoaded> createState() => _AboutLoadedState();
-}
-
-class _AboutLoadedState extends State<_AboutLoaded>
-    with SingleTickerProviderStateMixin {
-  late AnimationController animationController;
-  late Timer timer;
-
-  @override
-  void initState() {
-    animationController = AnimationController(
-      vsync: this,
-      duration: const Duration(
-        milliseconds: 500,
-      ),
-    );
-    timer = Timer(
-        const Duration(milliseconds: 200), () => animationController.forward());
-    super.initState();
-  }
-
-  @override
-  void dispose() {
-    animationController.dispose();
-    timer.cancel();
-    super.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return size.width > mobile
         ? AboutWebView(
-            aboutData: widget.aboutData,
-            animationController: animationController,
+            aboutData: aboutData,
           )
         : AboutMobileView(
-            aboutData: widget.aboutData,
-            animationController: animationController,
+            aboutData: aboutData,
           );
   }
 }

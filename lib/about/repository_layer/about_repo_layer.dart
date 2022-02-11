@@ -12,8 +12,12 @@ class AboutRepoLayer {
       name: data.name,
       title: data.title,
       statement: data.statement,
-      hobbies: data.hobbies as List<Hobbies>,
-      skills: data.skills as List<Skills>,
+      hobbies: data.hobbies
+          .map((e) => Hobbies(id: e.id, hobby: e.hobby, image: e.image))
+          .toList(),
+      skills: data.skills
+          .map((e) => Skills(id: e.id, title: e.title, image: e.image))
+          .toList(),
     );
   }
 }
