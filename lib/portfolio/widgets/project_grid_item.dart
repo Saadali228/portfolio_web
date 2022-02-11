@@ -16,20 +16,24 @@ class ProjectGridItem extends StatelessWidget {
       alignment: Alignment.center,
       children: [
         MouseRegion(
-          onHover: (event) {
-            
-          },
-          child: Image.network(
-            projectData![index].image,
-            // color: Colors.black.withOpacity(0.5),
-            // colorBlendMode: BlendMode.multiply,
-            // errorBuilder: (context, error, stackTrace) {
-            //   return const Icon(
-            //     Icons.image_not_supported_outlined,
-            //     size: 50,
-            //     color: Colors.blue,
-            //   );
-            // },
+          onHover: (event) {},
+          child: Card(
+            clipBehavior: Clip.hardEdge,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(20.0),
+            ),
+            child: Image.network(
+              projectData![index].image,
+              // color: Colors.black.withOpacity(0.5),
+              // colorBlendMode: BlendMode.multiply,
+              // errorBuilder: (context, error, stackTrace) {
+              //   return const Icon(
+              //     Icons.image_not_supported_outlined,
+              //     size: 50,
+              //     color: Colors.blue,
+              //   );
+              // },
+            ),
           ),
         ),
         // Text(
