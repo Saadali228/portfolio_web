@@ -1,4 +1,3 @@
-import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -19,7 +18,6 @@ class AboutScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<AboutBloc, AboutState>(
       builder: (context, state) {
-        print(state.aboutStatus);
         switch (state.aboutStatus) {
           case (AboutStatus.intial):
             context.read<AboutBloc>().add(

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:portfolio_web/about/repository_layer/models/about_repo_model.dart';
 import 'package:portfolio_web/about/widgets/about_me.dart';
 import 'package:portfolio_web/about/widgets/about_skill_grid.dart';
-import 'package:portfolio_web/utils/animation.dart';
 
 class AboutMobileView extends StatelessWidget {
   const AboutMobileView({

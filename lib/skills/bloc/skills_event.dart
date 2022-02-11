@@ -6,7 +6,7 @@ abstract class SkillsEvent extends Equatable {
   @override
   List<Object> get props => [];
 }
-class FetchPortfolioInfo extends SkillsEvent {
+class FetchSkillsInfo extends SkillsEvent {
   @override
   List<Object> get props => [];
 }

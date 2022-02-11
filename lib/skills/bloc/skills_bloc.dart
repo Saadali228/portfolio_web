@@ -11,7 +11,7 @@ class SkillsBloc extends Bloc<SkillsEvent, SkillsState> {
   SkillsBloc(
     this.skillsRepoLayer,
   ) : super(const SkillsState()) {
-    on<SkillsEvent>((event, emit) async {
+    on<FetchSkillsInfo>((event, emit) async {
       emit(
         state.copyWith(
           skillsStatus: SkillsStatus.loading,
@@ -19,9 +19,11 @@ class SkillsBloc extends Bloc<SkillsEvent, SkillsState> {
       );
       try {
         final skillsInfo = await skillsRepoLayer.fetchskillsDataFromDataLayer();
-        state.copyWith(
-          skillsList: skillsInfo,
-          skillsStatus: SkillsStatus.loaded,
+        emit(
+          state.copyWith(
+            skillsList: skillsInfo,
+            skillsStatus: SkillsStatus.loaded,
+          ),
         );
       } catch (_) {
         emit(

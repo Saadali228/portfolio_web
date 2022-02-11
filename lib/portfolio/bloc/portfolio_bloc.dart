@@ -17,20 +17,22 @@ class PortfolioBloc extends Bloc<PortfolioEvent, PortfolioState> {
           portfolioStatus: PortfolioStatus.loading,
         ),
       );
-      try {
-        final portfolioInfo =
-            await portfolioRepoLayer.fetchPortfolioDataFromDataLayer();
+      // try {
+      final portfolioInfo =
+          await portfolioRepoLayer.fetchPortfolioDataFromDataLayer();
+      emit(
         state.copyWith(
           portfolioList: portfolioInfo,
           portfolioStatus: PortfolioStatus.loaded,
-        );
-      } catch (_) {
-        emit(
-          state.copyWith(
-            portfolioStatus: PortfolioStatus.error,
-          ),
-        );
-      }
+        ),
+      );
+      // } catch (_) {
+      //   emit(
+      //     state.copyWith(
+      //       portfolioStatus: PortfolioStatus.error,
+      //     ),
+      //   );
+      // }
     });
   }
 }

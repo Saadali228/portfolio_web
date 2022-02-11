@@ -11,7 +11,8 @@ class PortfolioDataLayer {
     final portFolioData = data["data"]["projects"] as List;
     List<PortfolioDataModel>? portFolioList;
     if (data["status"] == "ok") {
-      portFolioList = portFolioData.map((e) => PortfolioDataModel.fromJson(e)).toList();
+      portFolioList =
+          portFolioData.map((e) => PortfolioDataModel.fromJson(e)).toList();
     } else {
       portFolioList = null;
     }

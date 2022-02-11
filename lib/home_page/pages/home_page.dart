@@ -7,6 +7,14 @@ import 'package:portfolio_web/about/pages/about_screen.dart';
 import 'package:portfolio_web/about/repository_layer/about_repo_layer.dart';
 import 'package:portfolio_web/home_page/widgets/home_page_banner.dart';
 import 'package:portfolio_web/home_page/widgets/web_nav_bar.dart';
+import 'package:portfolio_web/portfolio/bloc/portfolio_bloc.dart';
+import 'package:portfolio_web/portfolio/data_layer/portfolio_data_layer.dart';
+import 'package:portfolio_web/portfolio/pages/portfolio.dart';
+import 'package:portfolio_web/portfolio/repository_layer/portfolio_repo_layer.dart';
+import 'package:portfolio_web/skills/bloc/skills_bloc.dart';
+import 'package:portfolio_web/skills/data_layer/skills_data_layer.dart';
+import 'package:portfolio_web/skills/pages/skills_screen.dart';
+import 'package:portfolio_web/skills/repository_layer/skills_repo_layer.dart';
 import 'package:portfolio_web/utils/constants.dart';
 
 class HomePageScreen extends StatefulWidget {
@@ -24,6 +32,14 @@ class _HomePageScreenState extends State<HomePageScreen> {
     AboutDataLayer aboutDataLayer = AboutDataLayer();
     AboutRepoLayer aboutRepoLayer = AboutRepoLayer(
       aboutDataLayer: aboutDataLayer,
+    );
+    SkillsDataLayer skillsDataLayer = SkillsDataLayer();
+    SkillsRepoLayer skillsRepoLayer = SkillsRepoLayer(
+      skillsDataLayer,
+    );
+    PortfolioDataLayer portfolioDataLayer = PortfolioDataLayer();
+    PortfolioRepoLayer portfolioRepoLayer = PortfolioRepoLayer(
+      portfolioDataLayer,
     );
     return Scaffold(
       appBar: AppBar(
@@ -63,6 +79,22 @@ class _HomePageScreenState extends State<HomePageScreen> {
               aboutRepoLayer,
             ),
             child: AboutScreen(
+              controller: pageController,
+            ),
+          ),
+          BlocProvider(
+            create: (context) => SkillsBloc(
+              skillsRepoLayer,
+            ),
+            child: SkillsScreen(
+              controller: pageController,
+            ),
+          ),
+          BlocProvider(
+            create: (context) => PortfolioBloc(
+              portfolioRepoLayer,
+            ),
+            child: PortfolioScreen(
               controller: pageController,
             ),
           ),
