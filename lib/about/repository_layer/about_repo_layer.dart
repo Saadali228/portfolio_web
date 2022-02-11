@@ -13,6 +13,7 @@ class AboutRepoLayer {
       title: data.title,
       statement: data.statement,
       hobbies: data.hobbies as List<Hobbies>,
+      skills: data.skills as List<Skills>,
     );
   }
 }
