@@ -5,6 +5,10 @@ import 'package:portfolio_web/about/bloc/about_bloc.dart';
 import 'package:portfolio_web/about/data_layer/about_data_layer.dart';
 import 'package:portfolio_web/about/pages/about_screen.dart';
 import 'package:portfolio_web/about/repository_layer/about_repo_layer.dart';
+import 'package:portfolio_web/contact/bloc/contact_bloc.dart';
+import 'package:portfolio_web/contact/data_layer/contact_data_layer.dart';
+import 'package:portfolio_web/contact/pages/contact_page.dart';
+import 'package:portfolio_web/contact/repository_layer/contact_repo_layer.dart';
 import 'package:portfolio_web/home_page/widgets/home_page_banner.dart';
 import 'package:portfolio_web/home_page/widgets/web_nav_bar.dart';
 import 'package:portfolio_web/portfolio/bloc/portfolio_bloc.dart';
@@ -40,6 +44,10 @@ class _HomePageScreenState extends State<HomePageScreen> {
     PortfolioDataLayer portfolioDataLayer = PortfolioDataLayer();
     PortfolioRepoLayer portfolioRepoLayer = PortfolioRepoLayer(
       portfolioDataLayer,
+    );
+    ContactDataLayer contactDataLayer = ContactDataLayer();
+    ContactRepoLayer contactRepoLayer = ContactRepoLayer(
+      contactDataLayer,
     );
     return Scaffold(
       appBar: AppBar(
@@ -95,6 +103,14 @@ class _HomePageScreenState extends State<HomePageScreen> {
               portfolioRepoLayer,
             ),
             child: PortfolioScreen(
+              controller: pageController,
+            ),
+          ),
+          BlocProvider(
+            create: (context) => ContactBloc(
+              contactRepoLayer,
+            ),
+            child: ContactPage(
               controller: pageController,
             ),
           ),

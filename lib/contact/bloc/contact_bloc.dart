@@ -20,9 +20,11 @@ class ContactBloc extends Bloc<ContactEvent, ContactState> {
       try {
         final contactInfo =
             await contactRepoLayer.fetchContactDataFromDataLayer();
-        state.copyWith(
-          contactRepoModel: contactInfo,
-          contactStatus: ContactStatus.loaded,
+        emit(
+          state.copyWith(
+            contactRepoModel: contactInfo,
+            contactStatus: ContactStatus.loaded,
+          ),
         );
       } catch (_) {
         emit(
