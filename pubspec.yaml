@@ -13,6 +13,7 @@ dependencies:
   equatable:
   flutter_bloc:
   google_fonts: 2.1.1
+  bloc_test: ^9.0.0
 
 dev_dependencies:
   flutter_test:
@@ -20,6 +21,7 @@ dev_dependencies:
   test:  
   flutter_lints: ^1.0.0
   url_strategy: ^0.2.0
+  
 
 flutter:
 
